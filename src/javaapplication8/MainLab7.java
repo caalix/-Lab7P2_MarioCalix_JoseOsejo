@@ -43,7 +43,6 @@ public class MainLab7 extends javax.swing.JFrame {
         pf_contrasena = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jd_admin = new javax.swing.JDialog();
         jd_comprador = new javax.swing.JDialog();
         jLabel4 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -57,7 +56,7 @@ public class MainLab7 extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tabla2 = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cb_accesorio2 = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
         tf_usuarioL = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -139,17 +138,6 @@ public class MainLab7 extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jButton3)
                 .addContainerGap(50, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jd_adminLayout = new javax.swing.GroupLayout(jd_admin.getContentPane());
-        jd_admin.getContentPane().setLayout(jd_adminLayout);
-        jd_adminLayout.setHorizontalGroup(
-            jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jd_adminLayout.setVerticalGroup(
-            jd_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -257,8 +245,13 @@ public class MainLab7 extends javax.swing.JFrame {
 
         jLabel11.setText("Accesorio");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setSelectedIndex(-1);
+        cb_accesorio2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_accesorio2.setSelectedIndex(-1);
+        cb_accesorio2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_accesorio2ItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -268,7 +261,7 @@ public class MainLab7 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cb_accesorio2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(393, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -282,7 +275,7 @@ public class MainLab7 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_accesorio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(290, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -291,7 +284,7 @@ public class MainLab7 extends javax.swing.JFrame {
                     .addContainerGap(65, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Comprar", jPanel2);
+        jTabbedPane1.addTab("Compras", jPanel2);
 
         jButton4.setText("Cerrar Sesion");
 
@@ -461,7 +454,7 @@ public class MainLab7 extends javax.swing.JFrame {
                     s.getId(),
                     s.getNombre(),
                     s.getPrecio(),
-                    s.getPrecio(),
+                    s.getCantidad(),
                 };                
                 DefaultTableModel modelo
                         = (DefaultTableModel) tabla1.getModel();
@@ -469,6 +462,24 @@ public class MainLab7 extends javax.swing.JFrame {
                 tabla1.setModel(modelo);                             
             }
     }//GEN-LAST:event_cb_accesorioItemStateChanged
+
+    private void cb_accesorio2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_accesorio2ItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == 2) {
+                Accesorios s = (Accesorios)
+                        cb_accesorio.getSelectedItem();
+                Object[] newrow = {
+                    s.getId(),
+                    s.getNombre(),
+                    s.getPrecio(),
+                    s.getCantidad(),
+                };                
+                DefaultTableModel modelo
+                        = (DefaultTableModel) tabla2.getModel();
+                modelo.addRow(newrow);
+                tabla2.setModel(modelo);                             
+            }
+    }//GEN-LAST:event_cb_accesorio2ItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -506,10 +517,10 @@ public class MainLab7 extends javax.swing.JFrame {
     }
     
     private void openJDL(){
-        jd_admin.pack(); //hacer grande
-        jd_admin.setLocationRelativeTo(this); //centrar pagina con la otra
-        jd_admin.setModal(true); //bloquear 
-        jd_admin.setVisible(true); //mostrar la ventana
+        //jd_admin.pack(); //hacer grande
+        //jd_admin.setLocationRelativeTo(this); //centrar pagina con la otra
+        //jd_admin.setModal(true); //bloquear 
+        //jd_admin.setVisible(true); //mostrar la ventana
     }
     
     private void compradorJDL(){
@@ -528,11 +539,11 @@ public class MainLab7 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_accesorio;
+    private javax.swing.JComboBox<String> cb_accesorio2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -550,7 +561,6 @@ public class MainLab7 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton jb_registrarse;
-    private javax.swing.JDialog jd_admin;
     private javax.swing.JDialog jd_comprador;
     private javax.swing.JDialog jd_registro;
     private javax.swing.JPasswordField pf_contrasena;
