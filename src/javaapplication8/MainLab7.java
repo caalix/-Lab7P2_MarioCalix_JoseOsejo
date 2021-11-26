@@ -455,20 +455,18 @@ public class MainLab7 extends javax.swing.JFrame {
     private void cb_accesorioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_accesorioItemStateChanged
         // TODO add your handling code here:
         if (evt.getStateChange() == 2) {
-                /*Accesorios s = (Accesorios)
-                        cb_usuarios.getSelectedItem();
+                Accesorios s = (Accesorios)
+                        cb_accesorio.getSelectedItem();
                 Object[] newrow = {
+                    s.getId(),
                     s.getNombre(),
-                    s.getUsuario(),
-                    s.getContrasena(),
-                    s.getEdad(),
-                    s.getNum_cuenta(),
-                    s.getSaldo(),
+                    s.getPrecio(),
+                    s.getPrecio(),
                 };                
                 DefaultTableModel modelo
                         = (DefaultTableModel) tabla1.getModel();
                 modelo.addRow(newrow);
-                tabla1.setModel(modelo);  */                           
+                tabla1.setModel(modelo);                             
             }
     }//GEN-LAST:event_cb_accesorioItemStateChanged
 
