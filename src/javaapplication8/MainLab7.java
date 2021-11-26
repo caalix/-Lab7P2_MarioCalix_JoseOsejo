@@ -159,6 +159,12 @@ public class MainLab7 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        tf_usuarioL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_usuarioLActionPerformed(evt);
+            }
+        });
+
         jButton1.setText("Ingresar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -227,6 +233,8 @@ public class MainLab7 extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        lista.add(adminDefault);
+        
         if (tf_usuarioL.getText().equals(u)  &&  pf_contrasenaL.getText().equals(p)){
             tf_usuarioL.setText("");
             pf_contrasenaL.setText("");
@@ -270,6 +278,10 @@ public class MainLab7 extends javax.swing.JFrame {
                 "Ocurrio un error y no se guardaron los datos");
         }
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void tf_usuarioLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_usuarioLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_usuarioLActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,5 +364,8 @@ public class MainLab7 extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     ArrayList<Usuarios> lista = new ArrayList();
-    String u="admin", p="123";
+    String u = "admin";
+    String p = "123";
+    String edad ="23";
+    UsuarioAdmin adminDefault = new UsuarioAdmin(u,p,edad);
 }
