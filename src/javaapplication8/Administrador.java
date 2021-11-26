@@ -11,4 +11,5 @@ package javaapplication8;
  */
 public class Administrador {
     
+    
 }
