@@ -43,6 +43,8 @@ public class MainLab7 extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jd_admin = new javax.swing.JDialog();
+        jd_comprador = new javax.swing.JDialog();
+        jLabel4 = new javax.swing.JLabel();
         tf_usuarioL = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jb_registrarse = new javax.swing.JButton();
@@ -136,6 +138,25 @@ public class MainLab7 extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        jLabel4.setText("Comprador");
+
+        javax.swing.GroupLayout jd_compradorLayout = new javax.swing.GroupLayout(jd_comprador.getContentPane());
+        jd_comprador.getContentPane().setLayout(jd_compradorLayout);
+        jd_compradorLayout.setHorizontalGroup(
+            jd_compradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_compradorLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel4)
+                .addContainerGap(316, Short.MAX_VALUE))
+        );
+        jd_compradorLayout.setVerticalGroup(
+            jd_compradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_compradorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addContainerGap(275, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Ingresar");
@@ -210,7 +231,11 @@ public class MainLab7 extends javax.swing.JFrame {
             tf_usuarioL.setText("");
             pf_contrasenaL.setText("");
             openJDL();
-        } else {
+        } else if(tf_usuarioL.getText()!=u  &&  pf_contrasenaL.getText()!=p){
+            tf_usuarioL.setText("");
+            pf_contrasenaL.setText("");
+            compradorJDL();
+        }else {
             JOptionPane.showMessageDialog(this, "El usuario no existe.");
         }
     }//GEN-LAST:event_jButton1MouseClicked
@@ -288,6 +313,13 @@ public class MainLab7 extends javax.swing.JFrame {
         jd_admin.setVisible(true); //mostrar la ventana
     }
     
+    private void compradorJDL(){
+        jd_comprador.pack(); //hacer grande
+        jd_comprador.setLocationRelativeTo(this); //centrar pagina con la otra
+        jd_comprador.setModal(true); //bloquear 
+        jd_comprador.setVisible(true); //mostrar la ventana
+    }
+    
     private void registroJDL(){
         jd_registro.pack(); //hacer grande
         jd_registro.setLocationRelativeTo(this); //centrar pagina con la otra
@@ -301,6 +333,7 @@ public class MainLab7 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -308,6 +341,7 @@ public class MainLab7 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JButton jb_registrarse;
     private javax.swing.JDialog jd_admin;
+    private javax.swing.JDialog jd_comprador;
     private javax.swing.JDialog jd_registro;
     private javax.swing.JPasswordField pf_contrasena;
     private javax.swing.JPasswordField pf_contrasenaL;
