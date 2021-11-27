@@ -333,6 +333,11 @@ public class MainLab7 extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jb_registrarse.setText("Registrarse");
         jb_registrarse.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -395,7 +400,7 @@ public class MainLab7 extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        lista.add(adminDefault);
+        /*lista.add(adminDefault);
         
         if (tf_usuarioL.getText().equals(u)  &&  pf_contrasenaL.getText().equals(p)){
             tf_usuarioL.setText("");
@@ -407,12 +412,23 @@ public class MainLab7 extends javax.swing.JFrame {
             compradorJDL();
         }else {
             JOptionPane.showMessageDialog(this, "El usuario no existe.");
-        }
+        }*/
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jb_registrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_registrarseMouseClicked
         // TODO add your handling code here:
-        registroJDL();
+        administrarUsuarios ap=
+                new administrarUsuarios("C:\\Users\\mario\\OneDrive\\Desktop\\Usuarios\\Usuarios.txt");        
+                ap.cargarArchivo();
+                String u,c;
+                int e;
+                u=JOptionPane.showInputDialog("Nombre de usuario");
+                c=JOptionPane.showInputDialog("Contrasena");
+                e=Integer.parseInt(JOptionPane.showInputDialog("Edad"));
+                JOptionPane.showMessageDialog(this, "Registrado exitosamente");
+                Usuarios t = new Usuarios(u,c,e);
+                ap.getListaUsuarios().add(t);
+        //registroJDL();
     }//GEN-LAST:event_jb_registrarseMouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -424,8 +440,8 @@ public class MainLab7 extends javax.swing.JFrame {
             usuario = tf_usuario.getText();
             contrasena = pf_contrasena.getText();
             edad = tf_edad.getText();
-            Usuarios x = new Usuarios(usuario, contrasena, edad);
-            lista.add(x);
+           // Usuarios x = new Usuarios(usuario, contrasena, edad);
+            //lista.add(x);
 
             /*DefaultComboBoxModel dc=
             (DefaultComboBoxModel) cb_amigos.getModel();
@@ -480,6 +496,25 @@ public class MainLab7 extends javax.swing.JFrame {
                 tabla2.setModel(modelo);                             
             }
     }//GEN-LAST:event_cb_accesorio2ItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (tf_usuarioL.getText().equals(u)  &&  pf_contrasenaL.getText().equals(p)){
+            tf_usuarioL.setText("");
+            pf_contrasenaL.setText("");
+            jf_admin jfA = new jf_admin();
+            jfA.show();
+            dispose();
+        } else if(tf_usuarioL.getText()!="admin"  &&  pf_contrasenaL.getText()!="123"){
+            tf_usuarioL.setText("");
+            pf_contrasenaL.setText("");
+            jf_comprador jfC = new jf_comprador();
+            jfC.show();
+            dispose();
+        }else {
+            JOptionPane.showMessageDialog(this, "El usuario no existe.");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

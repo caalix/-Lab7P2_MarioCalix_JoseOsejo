@@ -12,7 +12,7 @@ package javaapplication8;
 public class UsuarioAdmin extends Usuarios {
 
     public UsuarioAdmin(String usuario, String contrasena, String edad) {
-        super(usuario, contrasena, edad);
+        //super(usuario, contrasena, edad);
     }
     
 }

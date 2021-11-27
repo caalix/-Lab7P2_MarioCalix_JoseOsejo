@@ -10,12 +10,13 @@ package javaapplication8;
  * @author mario
  */
 public class Usuarios {
-    private String usuario, contrasena, edad;
+    private String usuario, contrasena;
+    private int edad;
 
     public Usuarios() {
     }
 
-    public Usuarios(String usuario, String contrasena, String edad) {
+    public Usuarios(String usuario, String contrasena, int edad) {
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.edad = edad;
@@ -37,11 +38,11 @@ public class Usuarios {
         this.contrasena = contrasena;
     }
 
-    public String getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(String edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 
